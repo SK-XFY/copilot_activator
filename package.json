@@ -1,0 +1,7 @@
+{
+    "name": "copilot-agent",
+    "version": "1.0.0",
+    "pkg": {
+      "assets": ["./dist/**/*"]
+    }
+}
