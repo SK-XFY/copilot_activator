@@ -1,2 +1,11 @@
+# config
+config.ini
+
+# IDE
 .idea
+.env
+.vscode
+.venv
+
+# by-product
 __pycache__

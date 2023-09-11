@@ -1,0 +1,4 @@
+js/activator.js filter=lfs diff=lfs merge=lfs -text
+js/extension-chat.js filter=lfs diff=lfs merge=lfs -text
+js/extension-copilot.js filter=lfs diff=lfs merge=lfs -text
+js/extension-labs.js filter=lfs diff=lfs merge=lfs -text

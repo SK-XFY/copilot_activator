@@ -68,13 +68,13 @@ def activate(key, version):
                         else:
                             console.print('输入错误，请重新输入', style='yellow')
                             continue
-            copilot_path = activator.get_path()
-            if len(copilot_path) == 0:
-                console.print('未检测到Copilot插件，请安装后使用', style='bold yellow')
+        copilot_path = activator.get_path()
+        if len(copilot_path) == 0:
+            console.print('未检测到Copilot插件，请安装后使用', style='bold yellow')
+        else:
+            if choice == '1':
+                activator.modify_extension(copilot_path, key)
             else:
-                if choice == '1':
-                    activator.modify_extension(copilot_path, key)
-                else:
-                    activator.modify_extension(copilot_path)
-                console.print('\n激活成功，重启应用后生效\n', style='bold green')
+                activator.modify_extension(copilot_path)
+            console.print('\n激活成功，重启应用后生效\n', style='bold green')
         input('按回车键继续')

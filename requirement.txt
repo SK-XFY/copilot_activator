@@ -1,0 +1,11 @@
+certifi==2023.7.22
+charset-normalizer==3.2.0
+idna==3.4
+markdown-it-py==3.0.0
+mdurl==0.1.2
+PyExecJS==1.5.1
+Pygments==2.16.1
+requests==2.31.0
+rich==13.5.2
+six==1.16.0
+urllib3==2.0.4
