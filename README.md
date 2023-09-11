@@ -65,6 +65,15 @@ git lfs pull
     python main.py
     ```
 
+## 代码格式化
+
+本仓统一使用 [black](https://black.readthedocs.io/en/stable/) 格式化代码，遵循 "less is more" 的原则，无任何额外参数。同时，本仓使用 isort 排序 import 语句。
+
+```bash
+black .
+isort .
+```
+
 ## 说明
 
 本仓 fork 于 [ashdjashd/copilot_activator](https://github.com/ashdjashd/copilot_activator) ，但fork的公共仓分支无法使用 git-lfs ，因此取消了 fork 联系。
