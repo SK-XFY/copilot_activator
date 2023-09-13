@@ -1,21 +1,18 @@
 import hashlib
-import subprocess
-from functools import partial
+
+import cpuinfo
+import psutil
 
 import machineid
 
-subprocess.Popen = partial((subprocess.Popen), encoding="utf-8")
-import execjs
-from execjs._runner_sources import Node
 
-
-def get_machine_id(cmd):
-    runtime = execjs.ExternalRuntime(
-        name="Node.js (V8)", command=[cmd], encoding="UTF-8", runner_source=Node
-    )
-    machine_id = (
-        str.lower(machineid.id())
-        + "."
-        + runtime.eval("require('os').totalmem()+'.'+require('os').cpus()[0].model")
-    )
+def get_machine_id():
+    total_mem = psutil.virtual_memory().total
+    cpu_model = cpuinfo.get_cpu_info()["brand_raw"]
+    machine_id = f"{str.lower(machineid.id())}.{total_mem}.{cpu_model}"
     return hashlib.sha256(machine_id.encode("utf-8")).hexdigest()
+
+
+if __name__ == "__main__":
+    machine_id = get_machine_id()
+    print(machine_id)

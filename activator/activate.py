@@ -1,7 +1,4 @@
-import os
 import platform
-import subprocess
-from functools import partial
 
 from rich.console import Console
 from rich.markdown import Markdown
@@ -14,22 +11,12 @@ from activator.vs import VisualStudio
 from activator.vscode import VSCode
 from frozen_dir import app_path
 
-subprocess.Popen = partial((subprocess.Popen), encoding="utf-8")
 console = Console()
 APP_PATH = app_path()
 
 
 def activate(key, version):
-    nodeCmd = "node"
-    if platform.system() == "Darwin":
-        nodeCmd = os.path.join(APP_PATH, "node", "bin", "node")
-    else:
-        if platform.system() == "Windows":
-            nodeCmd = os.path.join(APP_PATH, "node", "node")
-        else:
-            if platform.system() == "Linux":
-                nodeCmd = os.path.join(APP_PATH, "node", "bin", "node")
-    _machine_id = machine_id.get_machine_id(nodeCmd)
+    _machine_id = machine_id.get_machine_id()
     is_valid, response = auth.auth_copilot(key, _machine_id, version)
     if not is_valid:
         console.print("授权失败", style="bold red")
